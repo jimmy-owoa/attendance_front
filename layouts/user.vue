@@ -20,6 +20,7 @@
 <script>
 export default {
   name: 'users',
+  middleware: 'usersAuth',
   methods: {
     logout() {
       this.$auth.logout();

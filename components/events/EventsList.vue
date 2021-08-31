@@ -4,7 +4,24 @@
     :items="events"
     :items-per-page="5"
     class="elevation-1"
-  ></v-data-table>
+  >
+  <template
+        v-slot:body="{ items }"
+      >
+        <tbody>
+          <tr
+            @click="showEvent(item)"
+            v-for="item in items"
+            :key="item.id"
+          >
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.event_type }}</td>
+            <td>{{ item.date }}</td>
+          </tr>
+        </tbody>
+      </template>
+  </v-data-table>
 </template>
 
 <script>
@@ -30,5 +47,10 @@
         ],
       }
     },
+    methods: {
+      showEvent(event){
+        this.$router.push(`reuniones/${event.id}`)
+      }
+    }
   }
 </script>

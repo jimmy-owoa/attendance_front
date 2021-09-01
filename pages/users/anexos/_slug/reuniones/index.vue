@@ -11,10 +11,10 @@ export default {
   components: { EventsList },
   layout: "user",
   computed: {
-    ...mapState("events", ["events"]),
+    ...mapState("church_annexes", ["events"]),
   },
   methods: {
-    ...mapActions("events", ["fetchEvents"]),
+    ...mapActions("church_annexes", ["fetchEvents"]),
   },
   created(){
     this.fetchEvents(this.$route.params.slug)

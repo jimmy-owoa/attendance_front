@@ -4,7 +4,7 @@
     <v-spacer class="pt-2"></v-spacer>
     <event-attendees/>
     <v-spacer class="pt-2"></v-spacer>
-    <v-btn color="primary" to="/users/reuniones">Volver</v-btn>
+    <v-btn color="primary" @click="goBack">Volver</v-btn>
   </div>
 </template>
 
@@ -16,13 +16,16 @@ export default {
   layout: 'user',
   components: { EventShow, EventAttendees },
   computed: {
-    ...mapGetters("events", ["getSelectedEvent"]),
+    ...mapGetters("church_annexes", ["getSelectedEvent"]),
   },
   methods: {
-    ...mapActions("events", ["fetchEvent"]),
+    ...mapActions("church_annexes", ["fetchEvent"]),
+    goBack(){
+      this.$router.go(-1)
+    }
   },
   created() {
-    this.fetchEvent(this.$route.params.id);
+    this.fetchEvent({slug: this.$route.params.slug, id: this.$route.params.id});
   },
 };
 </script>

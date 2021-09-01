@@ -17,7 +17,7 @@ export default {
     ...mapActions("events", ["fetchEvents"]),
   },
   created(){
-    this.fetchEvents()
+    this.fetchEvents(this.$route.params.slug)
   }
 };
 </script>

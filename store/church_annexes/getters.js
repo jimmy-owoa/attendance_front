@@ -5,3 +5,15 @@ export function getEvents(state) {
 export function getSelectedEvent(state) {
   return state.selectedEvent;
 }
+
+export function getMembers(state) {
+  return state.members;
+}
+
+export function getEventMembers(state, attendees) {
+  return state.eventMembers;
+}
+
+export function getEventAttendees(state) {
+  return state.eventAttendees;
+}

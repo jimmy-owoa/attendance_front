@@ -3,5 +3,8 @@ export default () => ({
   events: null,
   selectedEvent: null,
   error: false,
-  errorMessage: ''
+  errorMessage: '',
+  members: null,
+  eventAttendees: null,
+  eventMembers: null
 })

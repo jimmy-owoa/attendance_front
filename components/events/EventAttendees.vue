@@ -56,7 +56,6 @@ export default {
       "removeEventAttendee",
     ]),
     addAttendee(data) {
-      console.log(data.temp);
       this.loading = true;
       this.registerAttendee({
         slug: this.$route.params.slug,

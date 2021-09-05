@@ -1,18 +1,20 @@
 <template>
-  <v-row>
-    <v-col cols="4">
-      <v-text-field
-        :key="item.id"
-        label="Temperatura"
-        required
-        v-model="temp"
-        type="number"
-      ></v-text-field>
-    </v-col>
-    <v-col cols="2" class="pt-5 mt-5">
-      <v-btn @click="call(item)" small>></v-btn>
-    </v-col>
-  </v-row>
+  <v-form ref="form" v-model="valid" @submit.prevent="registerAttendee">
+    <v-row>
+      <v-col cols="8">
+        <v-text-field
+          label="Temperatura"
+          required
+          :rules="tempRules"
+          v-model="temp"
+          type="number"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="2" class="pt-5 mt-5">
+        <v-btn small :disabled="!valid" type="submit" color="success">></v-btn>
+      </v-col>
+    </v-row>
+  </v-form>
 </template>
 
 <script>
@@ -24,11 +26,14 @@ export default {
     },
   },
   data: () => ({
+    valid: false,
     temp: null,
+    tempRules: [(v) => !!v || "Temp is required"],
   }),
   methods: {
-    call(item) {
-      this.$emit("sendData", { item: item, temp: this.temp });
+    registerAttendee() {
+      if (this.temp !== null && this.valid === true)
+        this.$emit("sendData", { item: this.item, temp: this.temp });
     },
   },
 };

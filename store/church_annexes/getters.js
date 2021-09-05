@@ -10,7 +10,7 @@ export function getMembers(state) {
   return state.members;
 }
 
-export function getEventMembers(state, attendees) {
+export function getEventMembers(state) {
   return state.eventMembers;
 }
 

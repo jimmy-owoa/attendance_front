@@ -28,13 +28,35 @@ export default {
   data: () => ({
     valid: false,
     temp: null,
-    tempRules: [(v) => !!v || "Temp is required"],
+    tempRules: [(v) => !!v || "Temperatura obligatoria"],
   }),
   methods: {
     registerAttendee() {
-      if (this.temp !== null && this.valid === true)
+      let floatTemp = parseFloat(this.temp);
+      if ( floatTemp < 37.8 && floatTemp >= 35.0){
         this.$emit("sendData", { item: this.item, temp: this.temp });
+        this.permited();
+      }else{
+        this.denied();
+      }
     },
+    denied(){
+        this.$swal({
+        icon: "error",
+        title: "Acceso denegado.",
+        text: "La temperatura se encuentra fuera del rango normal.",
+        timer: 4000,
+        timerProgressBar: true,
+      });
+    },
+    permited(){
+        this.$swal({
+        icon: "success",
+        title: "Acceso concedido.",
+        timer: 2000,
+        timerProgressBar: true,
+      });
+    }
   },
 };
 </script>

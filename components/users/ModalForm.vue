@@ -4,12 +4,15 @@
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            Open Dialog
+            <v-icon left>
+              mdi-account-plus
+            </v-icon>
+            Miembro
           </v-btn>
         </template>
         <v-card>
           <v-card-title>
-            <span class="text-h5">Registro de miembro</span>
+            <span class="text-h5">Registrar nuevo miembro</span>
           </v-card-title>
           <v-card-text>
             <v-container>

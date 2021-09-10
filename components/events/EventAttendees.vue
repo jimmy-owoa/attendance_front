@@ -17,6 +17,10 @@
               </v-list-item>
             </template>
           </v-list>
+          <v-flex class="d-flex justify-end mb-6">
+            <modal-form/>
+            <!-- <v-btn color="info">+ Nuevo miembro</v-btn> -->
+          </v-flex>
         </v-card>
       </v-col>
       <v-col cols="12" sm="6">
@@ -40,9 +44,10 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+import ModalForm from '../users/ModalForm.vue';
 import ItemList from './ItemList.vue';
 export default {
-  components: { ItemList },
+  components: { ItemList, ModalForm },
   data: () => ({
     loading: false,
   }),
